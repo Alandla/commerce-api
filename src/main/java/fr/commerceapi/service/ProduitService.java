@@ -2,6 +2,7 @@ package fr.commerceapi.service;
 
 import fr.commerceapi.DAO.ProduitDAO;
 import fr.commerceapi.model.Produit;
+import fr.commerceapi.model.StockApiHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,19 @@ public class ProduitService {
 
     public Produit getBydId(Long id) {
         return produitDAO.getById(id);
+    }
+
+    @Transactional
+    public Produit updateStock(StockApiHolder apiHolder, Long id){
+        boolean action = apiHolder.isAdd();
+        int quantite = apiHolder.getQuantite();
+        Produit produit = produitDAO.getById(id);
+        if (action) {
+            produit.setStock(produit.getStock() + quantite);
+        } else {
+            produit.setStock(produit.getStock() - quantite);
+        }
+        return this.update(produit);
     }
 
     @Transactional

@@ -1,6 +1,7 @@
 package fr.commerceapi.controller;
 
 import fr.commerceapi.model.Produit;
+import fr.commerceapi.model.StockApiHolder;
 import fr.commerceapi.service.ProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/produits")
 @RestController
@@ -24,6 +26,11 @@ public class ProduitController {
     @GetMapping("/{id}")
     public Produit getById(@PathVariable final Long id) {
         return produitService.getBydId(id);
+    }
+
+    @PutMapping("/stock/{id}")
+    public Produit updateStock(@RequestBody final StockApiHolder apiHolder, @PathVariable final Long id) {
+        return this.produitService.updateStock(apiHolder, id);
     }
 
     @PutMapping

@@ -42,6 +42,27 @@ Entrée dans le body / Sortie:
 }
 ```
 
+## PUT /produits/stock/:id
+Modifie les stocks d'un produit selon son id
+
+Entrée dans le body:
+(Si add == true on ajoute, si == false on enleve)
+```
+{
+    "add": boolean
+    "quantite": int
+}
+```
+
+Retour:
+```
+{
+    "id": long,
+    "nom": string,
+    "description": string,
+    "prix": long
+}
+```
 
 ## DELETE /produits/:id
 Supprime un produit par son id
