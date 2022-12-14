@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RequestMapping("/produits")
 @RestController
@@ -26,6 +25,11 @@ public class ProduitController {
     @GetMapping("/{id}")
     public Produit getById(@PathVariable final Long id) {
         return produitService.getBydId(id);
+    }
+
+    @GetMapping("/code/{code}")
+    public Produit getByCode(@PathVariable final String code) {
+        return produitService.getByCode(code);
     }
 
     @PutMapping("/stock/{id}")

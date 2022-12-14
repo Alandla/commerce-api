@@ -18,6 +18,9 @@ public class Produit {
 	@Column(name = "nom")
     private String nom;
 
+    @Column(name = "code")
+    private String code;
+
 	@Column(name = "description")
     private String description;
 

@@ -27,6 +27,12 @@ public class ProduitDAO {
         return query.select(produit).from(produit).where(produit.id.eq(id)).fetchOne();
     }
 
+    public Produit getByCode(String code) {
+        JPAQuery<Produit> query = new JPAQuery<>(entityManager);
+        QProduit produit = QProduit.produit;
+        return query.select(produit).from(produit).where(produit.code.eq(code)).fetchOne();
+    }
+
     public Produit create(Produit produit) {
         this.entityManager.persist(produit);
         return produit;

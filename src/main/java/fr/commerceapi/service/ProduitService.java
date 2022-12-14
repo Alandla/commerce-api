@@ -23,6 +23,10 @@ public class ProduitService {
         return produitDAO.getById(id);
     }
 
+    public Produit getByCode(String code) {
+        return produitDAO.getByCode(code);
+    }
+
     @Transactional
     public Produit updateStock(StockApiHolder apiHolder, Long id){
         boolean action = apiHolder.isAdd();
